@@ -237,6 +237,17 @@ static HYD_status memory_alloc_kinds_fn(char *arg, char ***argv)
     return status;
 }
 
+static HYD_status no_stdin(char *arg, char ***argv)
+{
+    HYD_status status = HYD_SUCCESS;
+
+    status = HYDU_set_int(arg, &HYD_pmcd_pmip.user_global.no_stdin, 1);
+
+    (*argv)++;
+
+    return status;
+}
+
 
 static HYD_status pmi_kvsname_fn(char *arg, char ***argv)
 {
@@ -640,6 +651,7 @@ struct HYD_arg_match_table HYD_pmip_args_match_table[] = {
     {"iface", iface_fn, NULL},
     {"retries", retries_fn, NULL},
     {"memory-alloc-kinds", memory_alloc_kinds_fn, NULL},
+    {"no-stdin", no_stdin_fn, NULL},
     {"\0", NULL, NULL}
 };
 

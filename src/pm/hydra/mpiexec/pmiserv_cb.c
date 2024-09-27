@@ -545,7 +545,7 @@ HYD_status HYD_pmcd_pmiserv_proxy_init_cb(int fd, HYD_event_t events, void *user
     status = HYDT_dmx_register_fd(1, &fd, HYD_POLLIN, proxy, control_cb);
     HYDU_ERR_POP(status, "unable to register fd\n");
 
-    if (pgid == 0 && proxy_id == 0) {
+    if (pgid == 0 && proxy_id == 0 && HYD_pmcd_pmip.user_global.no_stdin != 1) {
         int fd_stdin = STDIN_FILENO;
         int stdin_valid;
         struct HYD_pmcd_hdr hdr;

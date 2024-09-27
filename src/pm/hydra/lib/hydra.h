@@ -386,6 +386,7 @@ struct HYD_user_global {
     int skip_launch_node;
     int gpus_per_proc;
     int gpu_subdevs_per_proc;
+    int no_stdin;
 
     struct HYD_env_global global_env;
 };
